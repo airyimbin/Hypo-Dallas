@@ -1314,6 +1314,7 @@ namespace Hypo
             {
                 MessageBox.Show("You need to input REQ number", "error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return;
+
             }
             Button button = sender as Button;
         LogMessageToFileForButtons(String.Format("Button clicked: {0} ({1})", button.Text, button.Parent.Text));
