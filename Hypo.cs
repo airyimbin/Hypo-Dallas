@@ -4,6 +4,7 @@
 // MVID: 48A1B5F1-121D-4610-ADF6-E570367C4DBE
 // Assembly location: C:\Users\airyimbin\Desktop\OneStop.exe
 
+//
 using Microsoft.Win32;
 using Hypo.Properties;
 using STS_Solution;
