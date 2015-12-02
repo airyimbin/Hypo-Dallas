@@ -1305,33 +1305,33 @@ namespace Hypo
     
     private void button18_Click(object sender, EventArgs e)
     {
-            if (this.requestInput == false)
-            {
-                MessageBox.Show("You need to input CI number", "error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                return;
+            //if (this.requestInput == false)
+            //{
+            //    MessageBox.Show("You need to input CI number", "error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //    return;
 
-            }
+            //}
             Button button = sender as Button;
         LogMessageToFileForButtons(String.Format("Button clicked: {0} ({1})", button.Text, button.Parent.Text));
         BootMode mode = SystemInformation.BootMode;
-            if (mode == BootMode.Normal)
-            {
-                //MessageBox.Show("Tron need to be run in Safe Mode. Please use the reboot in Safe Mode button.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                FormRestartConfirmation dlgRestart = new FormRestartConfirmation(60, "Tron need to be run in Safe Mode.\r\nWould you like reboot into safe mode?");
-                dlgRestart.ShowDialog();
-                if (dlgRestart.ButtonPressed == 1)
-                {
-                    LogMessage("Restarting the computer");
-                    ChangeStatus("Restarting the computer...", 100);
-                    this.bootSafeMode();
-                }
-                else
-                {
-                    MessageBox.Show("Restart in Safe Mode with networking.");
-                    LogMessage("Restart canceled by user");
-                }
-                return;
-            }
+            //if (mode == BootMode.Normal)
+            //{
+            //    //MessageBox.Show("Tron need to be run in Safe Mode. Please use the reboot in Safe Mode button.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //    FormRestartConfirmation dlgRestart = new FormRestartConfirmation(60, "Tron need to be run in Safe Mode.\r\nWould you like reboot into safe mode?");
+            //    dlgRestart.ShowDialog();
+            //    if (dlgRestart.ButtonPressed == 1)
+            //    {
+            //        LogMessage("Restarting the computer");
+            //        ChangeStatus("Restarting the computer...", 100);
+            //        this.bootSafeMode();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Restart in Safe Mode with networking.");
+            //        LogMessage("Restart canceled by user");
+            //    }
+            //    return;
+            //}
             string str = " ";
       string text = this.findFile("Tron.bat");
       //text = text.Replace("\\Tron.bat", "");
@@ -1450,7 +1450,14 @@ namespace Hypo
         Button button = sender as Button;
         LogMessageToFileForButtons(String.Format("Button clicked: {0} ({1})", button.Text, button.Parent.Text));
         string text = this.findFile("Tron.bat");
-        text = text.Replace("\\Tron.bat", "");
+            if (text.Contains("Tron.bat"))
+            {
+                text = text.Replace("\\Tron.bat", "");
+            }
+            else
+            {
+                text = text.Replace("\\tron.bat", "");
+            }
       
       string filename = text + "\\resources\\stage_7_wrap-up\\email_report\\SwithMailSettings.xml";
         
